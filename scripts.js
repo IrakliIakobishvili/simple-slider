@@ -5,6 +5,7 @@ const Slider = {
     prevBtn : document.querySelector(".prevBtn"),
     active  : "slider__list__item--active",
     index : 0,
+    autoplay: "",
     next: function() {
         if(Slider.index === Slider.items.length-1) {
             Slider.index = 0;
@@ -49,14 +50,25 @@ const Slider = {
           elem.msRequestFullscreen();
         }
     },
-    autoplay: function() {
-        setInterval(Slider.next,2000);
+    playSlider: function() {
+        Slider.autoplay = setInterval(Slider.next,2000);
+    },
+    stopSlider: function() {
+        clearInterval(Slider.autoplay);
     }
 }
 
-Slider.autoplay();
+Slider.playSlider();
 Slider.netxBtn.addEventListener("click",Slider.next);
 Slider.prevBtn.addEventListener("click",Slider.prev);
 document.onkeydown = Slider.checkKey;
 
 Slider.list.addEventListener("click",Slider.openFullscreen);
+Slider.list.addEventListener("mouseover",Slider.stopSlider);
+Slider.list.addEventListener("mouseout",Slider.playSlider);
+
+[Slider.prevBtn,Slider.netxBtn].forEach((element) => {
+    element.addEventListener("click",function(e){
+        e.stopPropagation();
+    });
+});

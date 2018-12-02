@@ -47,6 +47,18 @@
 }
 .nextBtn, .prevBtn {
     margin: 10px 10px;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    height: 30px;
+}
+.prevBtn {
+    left: 10px;
+}
+.nextBtn {
+    right: 10px;
 }
 .slider__list__item--active {
     z-index: 1;
