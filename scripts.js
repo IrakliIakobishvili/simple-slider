@@ -36,9 +36,23 @@ const Slider = {
            // right arrow
            Slider.next();
         }
-    }
+    },
+    openFullscreen: function() {
+        elem = Slider.list;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+          elem.msRequestFullscreen();
+        }
+      }
 }
 
 Slider.netxBtn.addEventListener("click",Slider.next);
 Slider.prevBtn.addEventListener("click",Slider.prev);
 document.onkeydown = Slider.checkKey;
+
+Slider.list.addEventListener("click",Slider.openFullscreen);
