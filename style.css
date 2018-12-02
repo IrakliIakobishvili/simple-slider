@@ -21,6 +21,8 @@
     font-size: 50px;
     color: #fff;
     font-weight: bold;
+    opacity: 0;
+    transition-duration: 1s;
 }
 
 .slider__list__item:nth-of-type(1) {
@@ -48,4 +50,5 @@
 }
 .slider__list__item--active {
     z-index: 1;
+    opacity: 1;
 }

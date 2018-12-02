@@ -48,9 +48,13 @@ const Slider = {
         } else if (elem.msRequestFullscreen) { /* IE/Edge */
           elem.msRequestFullscreen();
         }
-      }
+    },
+    autoplay: function() {
+        setInterval(Slider.next,2000);
+    }
 }
 
+Slider.autoplay();
 Slider.netxBtn.addEventListener("click",Slider.next);
 Slider.prevBtn.addEventListener("click",Slider.prev);
 document.onkeydown = Slider.checkKey;
