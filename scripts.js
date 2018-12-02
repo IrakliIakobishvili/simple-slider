@@ -12,9 +12,7 @@ const Slider = {
             Slider.items[Slider.index].classList.add(Slider.active);
         }else {
             Slider.index++;
-            // Slider.items.forEach(function(elemen){elemen.classList.remove(Slider.active)});
             Slider.items[Slider.index-1].classList.remove(Slider.active);
-            console.log(Slider.index)
             Slider.items[Slider.index].classList.add(Slider.active);
         }
     },
@@ -24,13 +22,23 @@ const Slider = {
             Slider.items[0].classList.remove(Slider.active);
             Slider.items[Slider.index].classList.add(Slider.active);
         }else {
-            Slider.index--;
-            // Slider.items.forEach(function(elemen){elemen.classList.remove(Slider.active)});
+            Slider.index--;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
             Slider.items[Slider.index+1].classList.remove(Slider.active);
             Slider.items[Slider.index].classList.add(Slider.active);
+        }
+    },
+    checkKey: function(e) {
+        // e = e || window.event;           
+        if (e.keyCode == '37') {
+           // left arrow
+           Slider.prev();
+        }else if (e.keyCode == '39') {
+           // right arrow
+           Slider.next();
         }
     }
 }
 
 Slider.netxBtn.addEventListener("click",Slider.next);
 Slider.prevBtn.addEventListener("click",Slider.prev);
+document.onkeydown = Slider.checkKey;
